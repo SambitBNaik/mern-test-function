@@ -2,9 +2,9 @@
   "name": "mern-test-function",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/handler.js",
   "scripts": {
-    "dev": "node src/server.js",
+    "dev": "node src/handler.js",
     "start": "node src/server.js"
   },
   "type": "module",
