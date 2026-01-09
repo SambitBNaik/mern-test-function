@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"node src/server.js",
-    "start":"node src/server.js"
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
   },
   "type": "module",
   "repository": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SambitBNaik/mern-test-function#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "serverless-http": "^4.0.0"
   }
 }
