@@ -1,0 +1,25 @@
+{
+  "name": "mern-test-function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node src/server.js",
+    "start":"node src/server.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SambitBNaik/mern-test-function.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SambitBNaik/mern-test-function/issues"
+  },
+  "homepage": "https://github.com/SambitBNaik/mern-test-function#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
