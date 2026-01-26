@@ -12,7 +12,7 @@ export const geyMyName = async(req, res) =>{
     }
 }
 
-export const getMyFullName= async()=>{
+export const getMyFullName= async(req, res)=>{
     try {
         const { fullName, middlName, lastName} = req.body;
 
