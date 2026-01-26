@@ -6,12 +6,12 @@ export const createUser = async(req, res)=>{
         const {name, email, password } = req.body;
 
         if(!name || !email || !password){
-            return res.status(400).json({message: 'Please provide the email, name, password'});
+            return res.status(403).json({message: 'Please provide the email, name, password'});
         }
 
         const existingUser = await User.findOne({ email });
         if(existingUser){
-            return res.status(400).json({ message: 'User already exists.'});
+            return res.status(403).json({ message: 'User already exists.'});
         }
 
         await User.create({
@@ -19,8 +19,6 @@ export const createUser = async(req, res)=>{
             email,
             password: password
         });
-
-        User.save();
 
         res.status(200).json({ message:"User created successfully"});
     } catch (error) {
