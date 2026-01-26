@@ -17,10 +17,10 @@ export const getMyFullName= async(req, res)=>{
         const { fullName, middlName, lastName} = req.body;
 
         if(!fullName || !lastName){
-            res.status(401).json({ message:'Please provide the fullName or lastName'});
+            return res.status(401).json({ message:'Please provide the fullName or lastName'});
         }
 
-        res.status(200).json({ message:`My fullname is ${fullName} ${middlName} ${lastName}`});
+        res.status(200).json({ message:`My fullname is ${fullName} ${middlName ? middlName : ""} ${lastName}`});
     } catch (error) {
         res.status(500).json({error: error.message});
     }
