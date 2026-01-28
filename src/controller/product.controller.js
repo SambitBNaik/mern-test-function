@@ -21,38 +21,46 @@ export const createProduct = async(req, res)=>{
     }
 }
 
-export const getProducts = async(req, res)=>{
+export const getProducts = async (req, res) => {
     try {
-        const { category, minPrice, maxPrice, page= 1, limit= 10 } = req.query;
+        let { category, minPrice, maxPrice, page = 1, limit = 10 } = req.query;
+
+        // convert query params to numbers
+        page = Number(page);
+        limit = Number(limit);
 
         const pipeline = [];
+        const match = {};
 
-        const match={};
-        if(category) match.category = category;
-        if(minPrice || maxPrice){
-            match.price={};
-            if(minPrice) match.price.$gte = Number(minPrice);
-            if(maxPrice) match.price.$lt = Number(maxPrice);
+        if (category) {
+            match.category = category;
         }
 
-        if(Object.keys(match).length){
+        if (minPrice || maxPrice) {
+            match.price = {};
+            if (minPrice) match.price.$gte = Number(minPrice);
+            if (maxPrice) match.price.$lte = Number(maxPrice);
+        }
+
+        if (Object.keys(match).length) {
             pipeline.push({ $match: match });
         }
 
-        pipeline.push({ $sort: {createdAt : -1} });
+        pipeline.push({ $sort: { createdAt: -1 } });
 
         pipeline.push(
-            { $skip: (page - 1) * limit},
-            {$limit:Number(limit) }
+            { $skip: (page - 1) * limit },
+            { $limit: limit }
         );
 
         const products = await Product.aggregate(pipeline);
 
-        res.json(products);
+        res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({ message: error.message});
+        res.status(500).json({ message: error.message });
     }
-}
+};
+
 
 //Read single product
 export const getProductById = async(req, res)=>{
