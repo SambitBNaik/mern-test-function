@@ -25,11 +25,6 @@ const productSchema = new mongoose.Schema({
     }
 },{ timestamps : true });
 
-// index for aggregation speed
-
-productSchema.index({ category: 1});
-productSchema.index({ price: 1});
-
 const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
 
 export default Product;
