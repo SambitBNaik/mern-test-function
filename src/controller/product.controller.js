@@ -31,7 +31,7 @@ export const getProducts = async(req, res)=>{
         if(category) match.category = category;
         if(minPrice || maxPrice){
             match.price={};
-            if(minPrice) match.price.$get = Number(minPrice);
+            if(minPrice) match.price.$gte = Number(minPrice);
             if(maxPrice) match.price.$lt = Number(maxPrice);
         }
 
