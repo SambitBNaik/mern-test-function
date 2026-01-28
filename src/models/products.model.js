@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema({
     },
     quantity:{
         type: Number,
-        default: true
+        default: 0
     },
     isActive:{
         type: Boolean,
