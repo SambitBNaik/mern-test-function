@@ -8,7 +8,7 @@ export const createProduct = async(req, res)=>{
             return res.status(400).json({ message:"Missing required fields"});
         }
 
-        const product = await Product({
+        const product = await Product.create({
             name,
             category,
             price,
